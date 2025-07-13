@@ -1,0 +1,1 @@
+[Коллекция в Postman](https://wishlists-api.postman.co/workspace/Wishlists~948c532f-f1b5-4758-bbd2-00a08b5b3b86/collection/45832810-63533e5d-ecdb-46b7-8457-e3961f20b408?action=share&creator=45832810)
