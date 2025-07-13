@@ -41,6 +41,21 @@ class PrismaWishlistRepository {
       isPublic: wishlist.isPublic,
     });
   }
+
+  /**
+   * @param {Object} options
+   * */
+  async getAll(options = {}) {
+    const wishlists = await this.prisma.wishlist.findMany({
+      include: options.include || {},
+    });
+
+    if (!wishlists) {
+      return null;
+    }
+
+    return wishlists.map(wishlist => new Wishlist(wishlist));
+  }
 }
 
 module.exports = PrismaWishlistRepository;
