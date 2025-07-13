@@ -10,8 +10,9 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "test": "jest",
-    "migrate": "npx prisma migrate dev --schema src/infrastructure/prisma",
-    "studio": "npx prisma studio --schema src/infrastructure/prisma"
+    "db:migrate": "npx prisma migrate dev --schema src/infrastructure/prisma",
+    "db:studio": "npx prisma studio --schema src/infrastructure/prisma",
+    "db:generate": "prisma generate --schema src/infrastructure/prisma"
   },
   "dependencies": {
     "@prisma/client": "^6.11.1",
