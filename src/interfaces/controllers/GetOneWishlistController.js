@@ -5,12 +5,12 @@ const getOneWishlistController = getWishlistUsecase => async (req, res) => {
     const { id } = req.params;
     const wishlist = await getWishlistUsecase.execute(id);
     if (!wishlist) {
-      res.status(404).json({ error: 'Wishlist not found' });
+      return res.status(404).json({ error: 'Вишлист не найден' });
     }
     res.status(200).json(WishlistMapper.toDTO(wishlist));
   } catch (err) {
     console.trace(err);
-    res.status(500).json({ error: 'Could not get Wishlist' });
+    res.status(500).json({ error: 'Не удалось получить вишлист' });
   }
 };
 

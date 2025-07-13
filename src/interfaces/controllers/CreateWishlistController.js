@@ -10,7 +10,7 @@ const createWishlistController = createWishlistUseCase => async (req, res) => {
     res.status(201).json(output);
   } catch (err) {
     console.trace(err);
-    res.status(500).json({ error: 'Could not create Wishlist' });
+    res.status(500).json({ error: 'Не удалось создать вишлист' });
   }
 };
 
