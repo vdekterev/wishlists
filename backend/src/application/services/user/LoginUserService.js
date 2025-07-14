@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const ResponseError = require('../../../domain/errors/ResponseError');
 
 class LoginUserService {
   /**
@@ -18,13 +19,13 @@ class LoginUserService {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
-      throw new Error(`Пользователь с email ${email} не найден`);
+      throw new ResponseError(`Пользователь с email ${email} не найден`, 401);
     }
 
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-      throw new Error('Неправильный пароль');
+      throw new ResponseError('Неправильный пароль', 401);
     }
 
     const token = jwt.sign(

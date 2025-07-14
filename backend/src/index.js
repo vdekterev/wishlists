@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+
+const errorHandler = require('./interfaces/middlewares/errorHandler');
 const wishlistRoutes = require('./interfaces/routes/WishlistRoutes');
 const userRoutes = require('./interfaces/routes/UserRoutes');
 
@@ -25,6 +27,7 @@ app.use(
 app.use('/api/wishlists', wishlistRoutes);
 app.use('/api/users', userRoutes);
 
+app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });

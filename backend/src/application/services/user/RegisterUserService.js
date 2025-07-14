@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
 const User = require('../../../domain/entities/User');
 const UserMapper = require('../../../interfaces/mappers/UserMapper');
+const ResponseError = require('../../../domain/errors/ResponseError');
 
 class RegisterUserService {
   /**
@@ -20,7 +21,9 @@ class RegisterUserService {
     const existing = await this.userRepository.findByEmail(email);
 
     if (existing) {
-      throw new Error(`Пользователь с email ${email} уже зарегистрирован`);
+      throw new ResponseError(
+        `Пользователь с email ${email} уже зарегистрирован`,
+      );
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

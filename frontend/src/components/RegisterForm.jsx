@@ -1,19 +1,24 @@
-import { Button, Form, Input, message } from 'antd';
+import { Button, Form, Input } from 'antd';
 import api from '../api/axios';
 import { useNavigate } from 'react-router-dom';
 
-export default function RegisterForm() {
+export default function RegisterForm({ message }) {
   const navigate = useNavigate();
 
   const onFinish = async values => {
     try {
       await api.post('api/users/register', values);
-      message.success('Регистрация успешна! Теперь войдите.')
+      message.success('Регистрация успешна! Теперь войдите.');
     } catch (err) {
-      message.error(err.response?.data?.error || 'Ошибка регистрации');
+      const errors = err.response?.data?.error;
+      if (!errors) {
+        return message.error('Ошибка регистрации');
+      }
+      errors.map(error => {
+        message.error(error.message);
+      });
     }
-  }
-
+  };
 
   return (
     <Form layout="vertical" onFinish={onFinish}>
