@@ -13,7 +13,7 @@ const authenticate = (req, res, next) => {
     req.user = jwt.verify(token, process.env.JWT_SECRET || 'dev-secret');
     next();
   } catch (err) {
-    throw new ResponseError('Invalid token', 403);
+    throw new ResponseError('Invalid or expired token', 403);
   }
 };
 
