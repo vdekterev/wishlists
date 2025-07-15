@@ -1,3 +1,5 @@
+const ResponseError = require('../../../domain/errors/ResponseError');
+
 class DeleteWishlistService {
   /**
    * @param {PrismaWishlistRepository} wishlistRepository
@@ -10,7 +12,11 @@ class DeleteWishlistService {
    * @param {Object} options
    * */
   async execute(id, options = {}) {
-    return await this.wishlistRepository.deleteOne(id, options);
+    const isDeleted = await this.wishlistRepository.deleteOne(id, options);
+    if (!isDeleted) {
+      throw new ResponseError('Ошибка при удалении вишлиста', 400);
+    }
+    return isDeleted;
   }
 }
 

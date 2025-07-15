@@ -1,3 +1,5 @@
+const ResponseError = require('../../../domain/errors/ResponseError');
+
 class UpdateWishlistService {
   /**
    * @param {PrismaWishlistRepository} wishlistRepository
@@ -11,7 +13,11 @@ class UpdateWishlistService {
    * @param {Object} options
    * */
   async execute(id, options = {}) {
-    return await this.wishlistRepository.update(id, options);
+    const wishlist = await this.wishlistRepository.update(id, options);
+    if (!wishlist) {
+      throw new ResponseError('Вишлист не найден', 400);
+    }
+    return wishlist;
   }
 }
 
