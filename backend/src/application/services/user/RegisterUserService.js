@@ -19,7 +19,6 @@ class RegisterUserService {
     const { email, password, name } = inputDto;
 
     const existing = await this.userRepository.findByEmail(email);
-
     if (existing) {
       throw new ResponseError(
         `Пользователь с email ${email} уже зарегистрирован`,

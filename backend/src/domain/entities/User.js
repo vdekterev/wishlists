@@ -6,6 +6,13 @@ class User {
     this.name = name;
     // this.wishlists = wishlists;
   }
+
+  /**
+   * @param {User} user
+   * */
+  static get(user) {
+    return user ? new User(user) : null;
+  }
 }
 
 module.exports = User;

@@ -8,9 +8,9 @@ export default function RegisterForm({ message }) {
   const onFinish = async values => {
     try {
       await api.post('api/users/register', values);
-      message.success('Регистрация успешна! Теперь войдите.');
+      navigate('/');
     } catch (err) {
-      const errors = err.response?.data?.error;
+      const errors = err.response?.data?.errors;
       if (!errors) {
         return message.error('Ошибка регистрации');
       }

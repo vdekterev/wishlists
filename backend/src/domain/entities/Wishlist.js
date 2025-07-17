@@ -6,6 +6,13 @@ class Wishlist {
     this.isPublic = isPublic;
     this.items = items;
   }
+
+  /**
+   * @param {Wishlist} wishlist
+   * */
+  static get(wishlist) {
+    return wishlist ? new Wishlist(wishlist) : null;
+  }
 }
 
 module.exports = Wishlist;

@@ -1,4 +1,5 @@
 const errorHandler = (err, req, res, next) => {
+  console.trace(err);
   // express-validator
   if (Array.isArray(err) && err[0]?.msg) {
     return res.status(400).json({

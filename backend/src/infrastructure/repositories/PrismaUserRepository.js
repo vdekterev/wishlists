@@ -22,12 +22,12 @@ class PrismaUserRepository {
 
   async findByEmail(email) {
     const user = await this.prisma.user.findUnique({ where: { email } });
-    return new User(user);
+    return User.get(user);
   }
 
   async findById(id) {
     const user = await this.prisma.user.findUnique({ where: { id } });
-    return new User(user);
+    return User.get(user);
   }
 }
 

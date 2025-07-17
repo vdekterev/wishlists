@@ -31,16 +31,7 @@ class PrismaWishlistRepository {
       include: options.include || {},
     });
 
-    if (!wishlist) {
-      return null;
-    }
-
-    return new Wishlist({
-      id: wishlist.id,
-      name: wishlist.name,
-      userId: wishlist.userId,
-      isPublic: wishlist.isPublic,
-    });
+    return Wishlist.get(wishlist);
   }
 
   /**
@@ -52,11 +43,7 @@ class PrismaWishlistRepository {
       include: options.include || {},
     });
 
-    if (!wishlists) {
-      return null;
-    }
-
-    return wishlists.map(wishlist => new Wishlist(wishlist));
+    return wishlists?.map(wishlist => Wishlist.get(wishlist));
   }
 
   /**
@@ -80,12 +67,7 @@ class PrismaWishlistRepository {
       },
     });
 
-    return new Wishlist({
-      id: updated.id,
-      name: updated.name,
-      userId: updated.userId,
-      isPublic: updated.isPublic,
-    });
+    return Wishlist.get(updated);
   }
 
   /**
