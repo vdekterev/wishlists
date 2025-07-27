@@ -1,16 +1,18 @@
 import { Button, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
+import { useAuth } from '../context/AuthContext.jsx';
 
 export default function LoginForm({ message }) {
+  const { fetchUser } = useAuth();
   const navigate = useNavigate();
 
   const onFinish = async values => {
     try {
       const res = await api.post('api/users/login', values);
       localStorage.setItem('token', res.data.token);
-      message.success('Успешный вход!');
-      navigate(0);
+      await fetchUser();
+      navigate('/');
     } catch (err) {
       const errors = err.response?.data?.errors;
       if (!errors) {

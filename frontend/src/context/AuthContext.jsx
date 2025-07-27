@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
-    navigate(0);
+    navigate('/');
   };
 
   useEffect(() => {
@@ -39,7 +39,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading, logout, isAuth }}>
+    <AuthContext.Provider
+      value={{ user, setUser, loading, logout, isAuth, fetchUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
