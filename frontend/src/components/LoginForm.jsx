@@ -10,7 +10,7 @@ export default function LoginForm({ message }) {
       const res = await api.post('api/users/login', values);
       localStorage.setItem('token', res.data.token);
       message.success('Успешный вход!');
-      navigate('/wishlists');
+      navigate(0);
     } catch (err) {
       const errors = err.response?.data?.errors;
       if (!errors) {

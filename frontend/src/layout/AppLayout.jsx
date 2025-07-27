@@ -1,21 +1,62 @@
-import { Layout } from 'antd';
+import { Dropdown, Layout, Space } from 'antd';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const { Header, Content, Footer } = Layout;
 
 export default function AppLayout({ children }) {
+  const { user, logout, isAuth } = useAuth();
+
+  const items = [
+    {
+      key: '1',
+      label: user?.name,
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: '3',
+      label: <Link to={'/wishlists'}>Мои вишлисты</Link>,
+    },
+    {
+      key: '4',
+      label: <Link to={'/settings'}>Настройки</Link>,
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: '5',
+      label: 'Выйти',
+      onClick: logout,
+    },
+  ];
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Header style={{ display: 'flex', justifyContent: 'space-between', color: '#fff' }}>
-        <Link to="/" style={{ color: '#fff', fontWeight: 'bold' }}>WishlistApp</Link>
-        <Link to="/wishlists" style={{ color: '#fff' }}>Мои вишлисты</Link>
+      <Header
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          color: '#fff',
+        }}
+      >
+        <Link to="/" style={{ color: '#fff', fontWeight: 'bold' }}>
+          WishlistApp
+        </Link>
+        {isAuth ? (
+          <Dropdown menu={{ items }} trigger={['click']} arrow>
+            <a onClick={e => e.preventDefault()}>
+              <Space>Профиль</Space>
+            </a>
+          </Dropdown>
+        ) : (
+          <Link to={'/auth'}>Войти</Link>
+        )}
       </Header>
-      <Content style={{ padding: '2rem' }}>
-        {children}
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>
-        Wishlist ©2025
-      </Footer>
+      <Content style={{ padding: '2rem' }}>{children}</Content>
+      <Footer style={{ textAlign: 'center' }}>Wishlist ©2025</Footer>
     </Layout>
   );
 }

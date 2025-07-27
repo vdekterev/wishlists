@@ -8,7 +8,7 @@ export default function RegisterForm({ message }) {
   const onFinish = async values => {
     try {
       await api.post('api/users/register', values);
-      navigate('/');
+      navigate(0);
     } catch (err) {
       const errors = err.response?.data?.errors;
       if (!errors) {
