@@ -10,6 +10,7 @@ class DeleteWishlistService {
   /**
    * @param {number} id
    * @param {Object} options
+   * @returns {Promise<boolean>}
    * */
   async execute(id, options = {}) {
     const isDeleted = await this.wishlistRepository.deleteOne(id, options);

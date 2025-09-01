@@ -1,10 +1,8 @@
 import { Button, Form, Input } from 'antd';
 import api from '../api/axios';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 
 export default function RegisterForm({ message }) {
-  const navigate = useNavigate();
   const { fetchUser } = useAuth();
 
   const onFinish = async values => {

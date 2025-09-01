@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const User = require('../../domain/entities/User');
+const UserEntity = require('../../domain/entities/UserEntity');
 
 class PrismaUserRepository {
   /**
@@ -9,6 +9,9 @@ class PrismaUserRepository {
     this.prisma = prismaClient;
   }
 
+  /**
+   * @param {UserEntity} user
+   * */
   async create(user) {
     return this.prisma.user.create({
       data: {
@@ -20,14 +23,22 @@ class PrismaUserRepository {
     });
   }
 
+  /**
+   * @param {string} email
+   * @returns {?UserEntity}
+   * */
   async findByEmail(email) {
     const user = await this.prisma.user.findUnique({ where: { email } });
-    return User.get(user);
+    return UserEntity.get(user);
   }
 
+  /**
+   * @param {number} id
+   * @returns {?UserEntity}
+   * */
   async findById(id) {
     const user = await this.prisma.user.findUnique({ where: { id } });
-    return User.get(user);
+    return UserEntity.get(user);
   }
 }
 
