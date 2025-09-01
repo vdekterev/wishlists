@@ -10,6 +10,8 @@ class MeUserService {
 
   /**
    * @param {MeUserDTO} inputDto
+   * @returns {Promise<UserEntity>}
+   * @throws {ResponseError}
    * */
   async execute(inputDto) {
     const { userId } = inputDto;

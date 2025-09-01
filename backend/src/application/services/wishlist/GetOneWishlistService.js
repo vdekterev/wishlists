@@ -11,6 +11,7 @@ class GetOneWishlistService {
    * @param {number} id
    * @param {Object} options
    * @returns {Promise<WishlistEntity>}
+   * @throws {ResponseError}
    * */
   async execute(id, options = {}) {
     const wishlist = await this.wishlistRepository.getOne(id, options);

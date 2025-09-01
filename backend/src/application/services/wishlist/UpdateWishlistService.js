@@ -11,6 +11,8 @@ class UpdateWishlistService {
   /**
    * @param {number} id
    * @param {Object} options
+   * @returns {Promise<WishlistEntity>}
+   * @throws {ResponseError}
    * */
   async execute(id, options = {}) {
     const wishlist = await this.wishlistRepository.update(id, options);

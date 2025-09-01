@@ -14,6 +14,8 @@ class RegisterUserService {
 
   /**
    * @param inputDto {RegisterUserDTO}
+   * @returns {Promise<UserEntity>}
+   * @throws {ResponseError}
    * */
   async execute(inputDto) {
     const { email, password, name } = inputDto;

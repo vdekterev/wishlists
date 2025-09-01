@@ -12,6 +12,8 @@ class LoginUserService {
 
   /**
    * @param {LoginUserDTO} inputDto
+   * @returns {{token: string, user: UserEntity}}
+   * @throws {ResponseError}
    * */
   async execute(inputDto) {
     const { email, password } = inputDto;
