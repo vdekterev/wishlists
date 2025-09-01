@@ -1,3 +1,6 @@
+/**
+ * @param {WishlistEntity} wishlistEntity
+ * */
 const toDTO = wishlistEntity => ({
   id: wishlistEntity.id,
   name: wishlistEntity.name,

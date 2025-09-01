@@ -1,6 +1,9 @@
 const CreateWishlistDTO = require('../../../application/dto/wishlist/CreateWishlistDTO');
 const WishlistMapper = require('../../mappers/WishlistMapper');
 
+/**
+ * @param {CreateWishlistService} createWishlistUseCase
+ * */
 const createWishlistController = createWishlistUseCase => async (req, res) => {
   const dto = new CreateWishlistDTO(req.body);
   const wishlist = await createWishlistUseCase.execute(dto);

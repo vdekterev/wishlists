@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+
 class ResponseError extends Error {
   /**
    * @param {string} message - Сообщение для клиента
@@ -8,6 +10,7 @@ class ResponseError extends Error {
     super(message);
     this.status = status;
     this.type = type;
+    this.id = uuidv4();
   }
 }
 

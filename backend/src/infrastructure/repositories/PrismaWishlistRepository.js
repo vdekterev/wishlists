@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const Wishlist = require('../../domain/entities/Wishlist');
+const WishlistEntity = require('../../domain/entities/WishlistEntity');
 
 class PrismaWishlistRepository {
   /**
@@ -9,6 +9,9 @@ class PrismaWishlistRepository {
     this.prisma = prismaClient;
   }
 
+  /**
+   * @param {WishlistEntity} wishlist
+   * */
   async save(wishlist) {
     await this.prisma.wishlist.create({
       data: {
@@ -23,7 +26,7 @@ class PrismaWishlistRepository {
   /**
    * @param {number} id
    * @param {Object} options
-   * @returns {Promise<Wishlist>}
+   * @returns {Promise<?WishlistEntity>}
    * */
   async getOne(id, options = {}) {
     const wishlist = await this.prisma.wishlist.findUnique({
@@ -31,24 +34,25 @@ class PrismaWishlistRepository {
       include: options.include || {},
     });
 
-    return Wishlist.get(wishlist);
+    return WishlistEntity.get(wishlist);
   }
 
   /**
    * @param {Object} options
-   * @returns {Promise<Wishlist[]>}
+   * @returns {Promise<?WishlistEntity[]>}
    * */
   async getAll(options = {}) {
     const wishlists = await this.prisma.wishlist.findMany({
       include: options.include || {},
     });
 
-    return wishlists?.map(wishlist => Wishlist.get(wishlist));
+    return wishlists?.map(wishlist => WishlistEntity.get(wishlist));
   }
 
   /**
    * @param {number} id
    * @param {Object} options
+   * @returns {?WishlistEntity}
    * */
   async update(id, options = {}) {
     const existing = await this.prisma.wishlist.findUnique({
@@ -67,12 +71,13 @@ class PrismaWishlistRepository {
       },
     });
 
-    return Wishlist.get(updated);
+    return WishlistEntity.get(updated);
   }
 
   /**
    * @param {number} id
    * @param {Object} options
+   * @returns {Promise<boolean>}
    * */
   async deleteOne(id, options = {}) {
     const existing = await this.prisma.wishlist.findUnique({

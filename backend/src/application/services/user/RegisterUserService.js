@@ -1,6 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
-const User = require('../../../domain/entities/User');
+const UserEntity = require('../../../domain/entities/UserEntity');
 const UserMapper = require('../../../interfaces/mappers/UserMapper');
 const ResponseError = require('../../../domain/errors/ResponseError');
 
@@ -27,7 +27,7 @@ class RegisterUserService {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new User({
+    const user = new UserEntity({
       id: uuidv4(),
       email,
       password: hashedPassword,

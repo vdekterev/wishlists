@@ -1,6 +1,9 @@
 const MeUserDTO = require('../../../application/dto/user/MeUserDTO');
 const UserMapper = require('../../mappers/UserMapper');
 
+/**
+ * @param {MeUserService} meUsecase
+ * */
 const meUserController = meUsecase => async (req, res) => {
   const dto = new MeUserDTO(req.user);
   const user = await meUsecase.execute(dto);

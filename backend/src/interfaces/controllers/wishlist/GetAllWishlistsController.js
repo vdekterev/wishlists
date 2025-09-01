@@ -1,5 +1,8 @@
 const WishlistMapper = require('../../mappers/WishlistMapper');
 
+/**
+ * @param {GetAllWishlistsService} getWishlistUsecase
+ * */
 const getAllWishlistsController = getWishlistUsecase => async (req, res) => {
   const wishlists = await getWishlistUsecase.execute();
 

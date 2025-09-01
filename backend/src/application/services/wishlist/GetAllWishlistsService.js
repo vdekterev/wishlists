@@ -8,6 +8,7 @@ class GetAllWishlistsService {
 
   /**
    * @param {Object} options
+   * @returns {Promise<?WishlistEntity[]>}
    * */
   async execute(options = {}) {
     return await this.wishlistRepository.getAll(options);

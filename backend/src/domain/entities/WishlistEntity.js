@@ -1,4 +1,4 @@
-class Wishlist {
+class WishlistEntity {
   constructor({ id, name, userId, isPublic = true, items = [] }) {
     this.id = id;
     this.name = name;
@@ -8,11 +8,12 @@ class Wishlist {
   }
 
   /**
-   * @param {Wishlist} wishlist
+   * @param {WishlistEntity} wishlist
+   * @returns {?WishlistEntity}
    * */
   static get(wishlist) {
-    return wishlist ? new Wishlist(wishlist) : null;
+    return wishlist ? new WishlistEntity(wishlist) : null;
   }
 }
 
-module.exports = Wishlist;
+module.exports = WishlistEntity;

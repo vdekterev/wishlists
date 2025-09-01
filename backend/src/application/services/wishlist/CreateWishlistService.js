@@ -1,4 +1,4 @@
-const Wishlist = require('../../../domain/entities/Wishlist');
+const WishlistEntity = require('../../../domain/entities/WishlistEntity');
 const { v4: uuidv4 } = require('uuid');
 
 class CreateWishlistService {
@@ -11,11 +11,12 @@ class CreateWishlistService {
 
   /**
    * @param inputDto {CreateWishlistDTO}
+   * @returns {WishlistEntity}
    * */
   async execute(inputDto) {
     const { name, userId, isPublic } = inputDto;
 
-    const wishlist = new Wishlist({
+    const wishlist = new WishlistEntity({
       id: uuidv4(),
       name,
       userId,
