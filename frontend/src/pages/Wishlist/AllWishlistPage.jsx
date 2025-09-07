@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import api from '../../api/axios.js';
 import WishlistCard from '../../components/WishlistCard.jsx';
 import { useNavigate } from 'react-router-dom';
+import { PlusCircleFilled } from '@ant-design/icons';
 
-export default function WishlistPage() {
+export default function AllWishlistPage() {
   const [wishlists, setWishlists] = useState([]);
   const navigate = useNavigate();
 
@@ -35,7 +36,10 @@ export default function WishlistPage() {
         alignItems: 'center',
       }}
     >
-      <Typography.Title level={2}>Мои вишлисты</Typography.Title>
+      <Typography.Title level={2}>
+        <span style={{ marginRight: '8px' }}>Мои вишлисты</span>
+        <PlusCircleFilled onClick={onCreate} />
+      </Typography.Title>
       <Space size="large" wrap style={{ marginTop: '2rem' }}>
         {!wishlists.length ? (
           <Empty
@@ -48,11 +52,7 @@ export default function WishlistPage() {
           </Empty>
         ) : (
           wishlists.map(wishlist => (
-            <WishlistCard
-              key={wishlist.id}
-              wishlist={wishlist}
-              onClick={() => navigate(`/wishlists/${wishlist.id}`)}
-            />
+            <WishlistCard key={wishlist.id} wishlist={wishlist} />
           ))
         )}
       </Space>

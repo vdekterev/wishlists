@@ -17,11 +17,24 @@ const {
 } = require('../validators/wishlistValidators');
 
 const withValidation = require('../../interfaces/middlewares/withValidation');
+const authenticate = require('../middlewares/authenticate');
 
 router.get('/', getAllWishlists);
 router.get('/:id', withValidation(validateGetOneWishlist), getOneWishlist);
-router.post('/', withValidation(validateCreateWishlist), createWishlist);
-router.put('/:id', withValidation(validateUpdateWishlist), updateWishlist);
-router.delete('/:id', withValidation(validateDeleteWishlist), deleteWishlist);
+router.post(
+  '/',
+  withValidation([validateCreateWishlist, authenticate]),
+  createWishlist,
+);
+router.put(
+  '/:id',
+  withValidation([validateUpdateWishlist, authenticate]),
+  updateWishlist,
+);
+router.delete(
+  '/:id',
+  withValidation([validateDeleteWishlist, authenticate]),
+  deleteWishlist,
+);
 
 module.exports = router;

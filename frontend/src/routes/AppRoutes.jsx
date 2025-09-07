@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage.jsx';
 import AuthPage from '../pages/AuthPage.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
-import WishlistPage from '../pages/Wishlist/WishlistPage.jsx';
+import WishlistPage from '../pages/Wishlist/AllWishlistPage.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import CreateWishlistPage from '../pages/Wishlist/CreateWishlistPage.jsx';
 

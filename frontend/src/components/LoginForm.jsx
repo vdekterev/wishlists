@@ -23,8 +23,9 @@ export default function LoginForm({ message }) {
       });
     }
   };
+
   return (
-    <Form layout="vertical" onFinish={onFinish}>
+    <Form layout="vertical" onFinish={onFinish} autoComplete={'on'}>
       <Form.Item name="email" label="Email" rules={[{ required: true }]}>
         <Input />
       </Form.Item>

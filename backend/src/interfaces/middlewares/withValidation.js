@@ -1,7 +1,7 @@
 const validateRequest = require('./validateRequest');
 
 /**
- * @param {Array<import('express-validator').ValidationChain>} validators
+ * @param {Array} validators
  * */
 const withValidation = (validators = []) => {
   return [...validators, validateRequest];

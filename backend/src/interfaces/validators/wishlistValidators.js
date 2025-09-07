@@ -20,12 +20,6 @@ const validateCreateWishlist = [
       'Поле name должно быть не менее 3 и не более 50 символов в длину',
     ),
 
-  body('userId')
-    .notEmpty()
-    .withMessage('Поле userId обязательно')
-    .isUUID()
-    .withMessage('Поле userId должно соответствовать формату uuid'),
-
   body('isPublic')
     .optional()
     .isBoolean()
