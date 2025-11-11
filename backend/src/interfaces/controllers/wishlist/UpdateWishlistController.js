@@ -1,13 +1,13 @@
 const WishlistMapper = require('../../mappers/WishlistMapper');
 
 /**
- * @param {UpdateWishlistService} updateWishlistUsecase
+ * @param {UpdateWishlistUsecase} updateWishlistUsecase
  * */
 const updateWishlistController = updateWishlistUsecase => async (req, res) => {
   const { id } = req.params;
   const { name, isPublic } = req.body;
 
-  const updated = await updateWishlistUsecase.execute(id, {
+  const updated = await updateWishlistUsecase.process(id, {
     name: name,
     isPublic: isPublic,
   });

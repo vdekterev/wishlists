@@ -1,6 +1,6 @@
 const ResponseError = require('../../../domain/errors/ResponseError');
 
-class MeUserService {
+class MeUserUsecase {
   /**
    * @param {PrismaUserRepository} userRepository
    * */
@@ -13,7 +13,7 @@ class MeUserService {
    * @returns {Promise<UserEntity>}
    * @throws {ResponseError}
    * */
-  async execute(inputDto) {
+  async process(inputDto) {
     const { userId } = inputDto;
 
     const user = await this.userRepository.findById(userId);
@@ -26,4 +26,4 @@ class MeUserService {
   }
 }
 
-module.exports = MeUserService;
+module.exports = MeUserUsecase;

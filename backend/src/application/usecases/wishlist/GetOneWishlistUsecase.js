@@ -1,6 +1,6 @@
 const ResponseError = require('../../../domain/errors/ResponseError');
 
-class GetOneWishlistService {
+class GetOneWishlistUsecase {
   /**
    * @param {PrismaWishlistRepository} wishlistRepository
    * */
@@ -13,7 +13,7 @@ class GetOneWishlistService {
    * @returns {Promise<WishlistEntity>}
    * @throws {ResponseError}
    * */
-  async execute(id, options = {}) {
+  async process(id, options = {}) {
     const wishlist = await this.wishlistRepository.getOne(id, options);
     if (!wishlist) {
       throw new ResponseError('Вишлист не найден', 404);
@@ -22,4 +22,4 @@ class GetOneWishlistService {
   }
 }
 
-module.exports = GetOneWishlistService;
+module.exports = GetOneWishlistUsecase;

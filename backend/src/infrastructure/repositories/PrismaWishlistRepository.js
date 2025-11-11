@@ -34,7 +34,7 @@ class PrismaWishlistRepository {
       include: options.include || {},
     });
 
-    return WishlistEntity.get(wishlist);
+    return new WishlistEntity(wishlist);
   }
 
   /**
@@ -46,7 +46,7 @@ class PrismaWishlistRepository {
       include: options.include || {},
     });
 
-    return wishlists?.map(wishlist => WishlistEntity.get(wishlist));
+    return wishlists?.map(wishlist => new WishlistEntity(wishlist));
   }
 
   /**
@@ -71,7 +71,7 @@ class PrismaWishlistRepository {
       },
     });
 
-    return WishlistEntity.get(updated);
+    return new WishlistEntity(updated);
   }
 
   /**

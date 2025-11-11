@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const ResponseError = require('../../../domain/errors/ResponseError');
 
-class LoginUserService {
+class LoginUserUsecase {
   /**
    * @param {PrismaUserRepository} userRepository
    * */
@@ -15,7 +15,7 @@ class LoginUserService {
    * @returns {{token: string, user: UserEntity}}
    * @throws {ResponseError}
    * */
-  async execute(inputDto) {
+  async process(inputDto) {
     const { email, password } = inputDto;
 
     const user = await this.userRepository.findByEmail(email);
@@ -40,4 +40,4 @@ class LoginUserService {
   }
 }
 
-module.exports = LoginUserService;
+module.exports = LoginUserUsecase;

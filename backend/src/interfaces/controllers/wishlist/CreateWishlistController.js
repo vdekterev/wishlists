@@ -2,14 +2,14 @@ const CreateWishlistDTO = require('../../../application/dto/wishlist/CreateWishl
 const WishlistMapper = require('../../mappers/WishlistMapper');
 
 /**
- * @param {CreateWishlistService} createWishlistUseCase
+ * @param {CreateWishlistUsecase} createWishlistUseCase
  * */
 const createWishlistController = createWishlistUseCase => async (req, res) => {
   const { userId } = req.user;
   const { name, isPublic } = req.body;
 
   const dto = new CreateWishlistDTO({ name, userId, isPublic });
-  const wishlist = await createWishlistUseCase.execute(dto);
+  const wishlist = await createWishlistUseCase.process(dto);
 
   const output = WishlistMapper.toDTO(wishlist);
   res.status(201).json(output);

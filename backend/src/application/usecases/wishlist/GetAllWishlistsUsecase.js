@@ -1,4 +1,4 @@
-class GetAllWishlistsService {
+class GetAllWishlistsUsecase {
   /**
    * @param {PrismaWishlistRepository} wishlistRepository
    * */
@@ -10,9 +10,9 @@ class GetAllWishlistsService {
    * @param {Object} options
    * @returns {Promise<?WishlistEntity[]>}
    * */
-  async execute(options = {}) {
+  async process(options = {}) {
     return await this.wishlistRepository.getAll(options);
   }
 }
 
-module.exports = GetAllWishlistsService;
+module.exports = GetAllWishlistsUsecase;

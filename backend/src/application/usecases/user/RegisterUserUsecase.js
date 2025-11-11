@@ -4,7 +4,7 @@ const UserEntity = require('../../../domain/entities/UserEntity');
 const UserMapper = require('../../../interfaces/mappers/UserMapper');
 const ResponseError = require('../../../domain/errors/ResponseError');
 
-class RegisterUserService {
+class RegisterUserUsecase {
   /**
    * @param {PrismaUserRepository} userRepository
    * */
@@ -17,7 +17,7 @@ class RegisterUserService {
    * @returns {Promise<UserEntity>}
    * @throws {ResponseError}
    * */
-  async execute(inputDto) {
+  async process(inputDto) {
     const { email, password, name } = inputDto;
 
     const existing = await this.userRepository.findByEmail(email);
@@ -42,4 +42,4 @@ class RegisterUserService {
   }
 }
 
-module.exports = RegisterUserService;
+module.exports = RegisterUserUsecase;

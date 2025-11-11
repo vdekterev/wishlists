@@ -1,7 +1,7 @@
 const WishlistEntity = require('../../../domain/entities/WishlistEntity');
 const { v4: uuidv4 } = require('uuid');
 
-class CreateWishlistService {
+class CreateWishlistUsecase {
   /**
    * @param wishlistRepository {PrismaWishlistRepository}
    * */
@@ -13,7 +13,7 @@ class CreateWishlistService {
    * @param inputDto {CreateWishlistDTO}
    * @returns {WishlistEntity}
    * */
-  async execute(inputDto) {
+  async process(inputDto) {
     const { name, userId, isPublic } = inputDto;
 
     const wishlist = new WishlistEntity({
@@ -29,4 +29,4 @@ class CreateWishlistService {
   }
 }
 
-module.exports = CreateWishlistService;
+module.exports = CreateWishlistUsecase;

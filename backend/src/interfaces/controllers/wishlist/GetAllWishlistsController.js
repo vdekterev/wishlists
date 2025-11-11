@@ -1,10 +1,10 @@
 const WishlistMapper = require('../../mappers/WishlistMapper');
 
 /**
- * @param {GetAllWishlistsService} getWishlistUsecase
- * */
+ * @param {GetAllWishlistsUsecase} getWishlistUsecase
+ */
 const getAllWishlistsController = getWishlistUsecase => async (req, res) => {
-  const wishlists = await getWishlistUsecase.execute();
+  const wishlists = await getWishlistUsecase.process();
 
   const mapped = wishlists.map(wishlist => WishlistMapper.toDTO(wishlist));
 
