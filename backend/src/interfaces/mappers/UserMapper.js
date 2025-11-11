@@ -1,6 +1,6 @@
 /**
  * @param {UserEntity} userEntity
- * */
+ */
 const toDTO = userEntity => ({
   id: userEntity.id,
   email: userEntity.email,

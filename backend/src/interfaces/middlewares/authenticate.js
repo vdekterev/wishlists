@@ -6,7 +6,7 @@ const ResponseError = require('../../domain/errors/ResponseError');
  * @param {import('express').Response} res
  * @param {import('express').NextFunction} next
  * @throws {ResponseError}
- * */
+ */
 const authenticate = (req, res, next) => {
   const auth = req.headers.authorization;
   if (!auth || !auth.startsWith('Bearer ')) {

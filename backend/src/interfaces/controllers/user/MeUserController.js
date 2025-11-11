@@ -3,7 +3,7 @@ const UserMapper = require('../../mappers/UserMapper');
 
 /**
  * @param {MeUserUsecase} meUsecase
- * */
+ */
 const meUserController = meUsecase => async (req, res) => {
   const dto = new MeUserDTO(req.user);
   const user = await meUsecase.process(dto);

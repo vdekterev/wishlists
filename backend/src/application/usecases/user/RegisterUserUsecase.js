@@ -7,7 +7,7 @@ const ResponseError = require('../../../domain/errors/ResponseError');
 class RegisterUserUsecase {
   /**
    * @param {PrismaUserRepository} userRepository
-   * */
+   */
   constructor(userRepository) {
     this.userRepository = userRepository;
   }
@@ -16,7 +16,7 @@ class RegisterUserUsecase {
    * @param inputDto {RegisterUserDTO}
    * @returns {Promise<UserEntity>}
    * @throws {ResponseError}
-   * */
+   */
   async process(inputDto) {
     const { email, password, name } = inputDto;
 

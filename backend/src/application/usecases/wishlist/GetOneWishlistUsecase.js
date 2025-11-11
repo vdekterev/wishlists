@@ -3,7 +3,7 @@ const ResponseError = require('../../../domain/errors/ResponseError');
 class GetOneWishlistUsecase {
   /**
    * @param {PrismaWishlistRepository} wishlistRepository
-   * */
+   */
   constructor(wishlistRepository) {
     this.wishlistRepository = wishlistRepository;
   }
@@ -12,7 +12,7 @@ class GetOneWishlistUsecase {
    * @param {Object} options
    * @returns {Promise<WishlistEntity>}
    * @throws {ResponseError}
-   * */
+   */
   async process(id, options = {}) {
     const wishlist = await this.wishlistRepository.getOne(id, options);
     if (!wishlist) {

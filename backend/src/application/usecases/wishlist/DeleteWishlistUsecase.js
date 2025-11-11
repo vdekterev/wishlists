@@ -3,7 +3,7 @@ const ResponseError = require('../../../domain/errors/ResponseError');
 class DeleteWishlistUsecase {
   /**
    * @param {PrismaWishlistRepository} wishlistRepository
-   * */
+   */
   constructor(wishlistRepository) {
     this.wishlistRepository = wishlistRepository;
   }
@@ -12,7 +12,7 @@ class DeleteWishlistUsecase {
    * @param {Object} options
    * @returns {Promise<boolean>}
    * @throws {ResponseError}
-   * */
+   */
   async process(id, options = {}) {
     const isDeleted = await this.wishlistRepository.deleteOne(id, options);
     if (!isDeleted) {

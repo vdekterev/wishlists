@@ -12,7 +12,7 @@ import Notification from './ui/Notification.jsx';
  * @param {Object} root0
  * @param {WishlistEntity} root0.wishlist
  * @param {Function} root0.onClick
- * */
+ */
 export default function WishlistCard({ wishlist, onClick }) {
   const { id, name, isPublic, user, items } = wishlist;
   const navigate = useNavigate();

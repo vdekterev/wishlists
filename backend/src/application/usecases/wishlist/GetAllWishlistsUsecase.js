@@ -1,7 +1,7 @@
 class GetAllWishlistsUsecase {
   /**
    * @param {PrismaWishlistRepository} wishlistRepository
-   * */
+   */
   constructor(wishlistRepository) {
     this.wishlistRepository = wishlistRepository;
   }
@@ -9,7 +9,7 @@ class GetAllWishlistsUsecase {
   /**
    * @param {Object} options
    * @returns {Promise<?WishlistEntity[]>}
-   * */
+   */
   async process(options = {}) {
     return await this.wishlistRepository.getAll(options);
   }
