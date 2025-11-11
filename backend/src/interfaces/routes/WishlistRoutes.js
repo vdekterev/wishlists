@@ -23,17 +23,17 @@ router.get('/', getAllWishlists);
 router.get('/:id', withValidation(validateGetOneWishlist), getOneWishlist);
 router.post(
   '/',
-  withValidation([validateCreateWishlist, authenticate]),
+  withValidation([authenticate, validateCreateWishlist]),
   createWishlist,
 );
 router.put(
   '/:id',
-  withValidation([validateUpdateWishlist, authenticate]),
+  withValidation([authenticate, validateUpdateWishlist]),
   updateWishlist,
 );
 router.delete(
   '/:id',
-  withValidation([validateDeleteWishlist, authenticate]),
+  withValidation([authenticate, validateDeleteWishlist]),
   deleteWishlist,
 );
 

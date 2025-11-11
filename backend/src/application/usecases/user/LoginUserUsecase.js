@@ -12,7 +12,7 @@ class LoginUserUsecase {
 
   /**
    * @param {LoginUserDTO} inputDto
-   * @returns {{token: string, user: UserEntity}}
+   * @returns {Promise<{token: string, user: UserEntity}>}
    * @throws {ResponseError}
    */
   async process(inputDto) {
