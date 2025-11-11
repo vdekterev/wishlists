@@ -7,9 +7,9 @@ export default function LoginForm({ message }) {
   const { fetchUser } = useAuth();
   const navigate = useNavigate();
 
-  const onFinish = async values => {
+  const onFinish = async formData => {
     try {
-      const res = await api.post('api/users/login', values);
+      const res = await api.post('api/users/login', formData);
       localStorage.setItem('token', res.data.token);
       await fetchUser();
       navigate('/');

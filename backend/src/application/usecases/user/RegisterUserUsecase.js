@@ -14,14 +14,14 @@ class RegisterUserUsecase {
 
   /**
    * @param inputDto {RegisterUserDTO}
-   * @returns {Promise<UserEntity>}
+   * @returns {Promise<{id: number, email: string, password: string, name: string}>}
    * @throws {ResponseError}
    */
   async process(inputDto) {
     const { email, password, name } = inputDto;
 
-    const existing = await this.userRepository.findByEmail(email);
-    if (existing) {
+    const existingUser = await this.userRepository.findByEmail(email);
+    if (existingUser.isExist()) {
       throw new ResponseError(
         `Пользователь с email ${email} уже зарегистрирован`,
       );

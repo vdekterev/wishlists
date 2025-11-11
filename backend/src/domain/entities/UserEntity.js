@@ -1,19 +1,24 @@
 class UserEntity {
   /**
-   * @param {number} id - id
-   * @param {string} email - Почта
-   * @param {string} password - Пароль
-   * @param {string} name - Имя
+   * @param {object} user
    */
-  constructor({ id, email, password, name /*wishlists*/ }) {
-    if (!id) {
+  constructor(user) {
+    if (!user) {
       return;
     }
-    this.id = id;
-    this.email = email;
-    this.password = password;
-    this.name = name;
+    this.id = user.id;
+    this.email = user.email;
+    this.password = user.password;
+    this.name = user.name;
     // this.wishlists = wishlists;
+  }
+
+  /**
+   * Проверка существует ли User
+   * @returns {boolean}
+   */
+  isExist() {
+    return !!this.id;
   }
 }
 

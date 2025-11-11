@@ -1,20 +1,24 @@
 class WishlistEntity {
   /**
-   * @param {number} id - id вишлиста
-   * @param {string} name - Название
-   * @param {number} userId - id пользователя
-   * @param {boolean} isPublic - Публичный или приватный
-   * @param {Array} items - Список подарков в вишлисте
+   * @param {object} user
    */
-  constructor({ id, name, userId, isPublic = true, items = [] }) {
-    if (!id) {
+  constructor(user) {
+    if (!user) {
       return;
     }
-    this.id = id;
-    this.name = name;
-    this.userId = userId;
-    this.isPublic = isPublic;
-    this.items = items;
+    this.id = user.id;
+    this.name = user.name;
+    this.userId = user.userId;
+    this.isPublic = user.isPublic;
+    this.items = user.items || [];
+  }
+
+  /**
+   * Проверка существует ли Wishlist
+   * @returns {boolean}
+   */
+  isExist() {
+    return !!this.id;
   }
 }
 
