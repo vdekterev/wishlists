@@ -29,7 +29,7 @@ class PrismaUserRepository {
    * */
   async findByEmail(email) {
     const user = await this.prisma.user.findUnique({ where: { email } });
-    return UserEntity.get(user);
+    return new UserEntity(user);
   }
 
   /**
@@ -38,7 +38,7 @@ class PrismaUserRepository {
    * */
   async findById(id) {
     const user = await this.prisma.user.findUnique({ where: { id } });
-    return UserEntity.get(user);
+    return new UserEntity(user);
   }
 }
 
