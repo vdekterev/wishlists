@@ -35,7 +35,7 @@ export default function CreateWishlistPage() {
         </Form.Item>
 
         <Form.Item label="Публичный" name="isPublic" valuePropName="checked">
-          <Switch />
+          <Switch defaultChecked />
         </Form.Item>
 
         <Form.Item>

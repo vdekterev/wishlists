@@ -8,8 +8,8 @@ const updateWishlistController = updateWishlistUsecase => async (req, res) => {
   const { name, isPublic } = req.body;
 
   const updated = await updateWishlistUsecase.process(id, {
-    name: name,
-    isPublic: isPublic,
+    name,
+    isPublic,
   });
 
   res.status(200).json(WishlistMapper.toDTO(updated));

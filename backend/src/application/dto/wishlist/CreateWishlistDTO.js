@@ -1,5 +1,5 @@
 class CreateWishlistDTO {
-  constructor({ name, userId, isPublic = true }) {
+  constructor({ name, userId, isPublic }) {
     this.name = name;
     this.userId = userId;
     this.isPublic = isPublic;

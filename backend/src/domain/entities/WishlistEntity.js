@@ -1,16 +1,16 @@
 class WishlistEntity {
   /**
-   * @param {object} user
+   * @param {object} wishlist
    */
-  constructor(user) {
-    if (!user) {
+  constructor(wishlist) {
+    if (!wishlist) {
       return;
     }
-    this.id = user.id;
-    this.name = user.name;
-    this.userId = user.userId;
-    this.isPublic = user.isPublic;
-    this.items = user.items || [];
+    this.id = wishlist.id;
+    this.name = wishlist.name;
+    this.userId = wishlist.userId;
+    this.isPublic = !!(wishlist.isPublic ?? true);
+    this.items = wishlist.items || [];
   }
 
   /**
