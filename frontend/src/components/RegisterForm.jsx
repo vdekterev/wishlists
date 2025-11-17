@@ -12,14 +12,8 @@ export default function RegisterForm({ message }) {
       await api.post('api/users/register', formData);
       await fetchUser();
       navigate('/');
-    } catch (err) {
-      const errors = err.response?.data?.errors;
-      if (!errors) {
-        return message.error('Ошибка регистрации');
-      }
-      errors.map(error => {
-        message.error(error.message);
-      });
+    } catch {
+      message.error('Ошибка регистрации')
     }
   };
 

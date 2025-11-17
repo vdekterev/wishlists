@@ -1,4 +1,4 @@
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
   console.trace(err);
   // express-validator
   if (Array.isArray(err) && err[0]?.msg) {
@@ -30,7 +30,7 @@ const errorHandler = (err, req, res, next) => {
     errors: [
       {
         type: 'internal',
-        message: 'Произошла внутренняя ошибка сервера',
+        message: 'Внутренняя ошибка приложения',
       },
     ],
   });

@@ -5,6 +5,7 @@ import PrivateRoute from './PrivateRoute.jsx';
 import WishlistPage from '../pages/Wishlist/AllWishlistPage.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import CreateWishlistPage from '../pages/Wishlist/CreateWishlistPage.jsx';
+import OneWishlistPage from '../pages/Wishlist/OneWishlistPage.jsx';
 
 export default function AppRoutes() {
   const { isAuth } = useAuth();
@@ -34,7 +35,7 @@ export default function AppRoutes() {
         path="/wishlists/:id"
         element={
           <PrivateRoute>
-            <WishlistPage />
+            <OneWishlistPage />
           </PrivateRoute>
         }
       />

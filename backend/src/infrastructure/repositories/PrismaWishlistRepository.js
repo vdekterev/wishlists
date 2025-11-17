@@ -50,7 +50,7 @@ class PrismaWishlistRepository {
   }
 
   /**
-   * @param {number} id
+   * @param {string} id
    * @param {Object} options
    * @returns {?WishlistEntity}
    */
@@ -75,7 +75,7 @@ class PrismaWishlistRepository {
   }
 
   /**
-   * @param {number} id
+   * @param {string} id
    * @param {Object} options
    * @returns {Promise<boolean>}
    */

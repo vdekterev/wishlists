@@ -1,6 +1,7 @@
 import { Dropdown, Layout, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
+import { useRef } from 'react';
 
 const { Header, Content, Footer } = Layout;
 
@@ -32,6 +33,7 @@ export default function AppLayout({ children }) {
       onClick: logout,
     },
   ];
+  const date = useRef(new Date().getFullYear());
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -56,7 +58,7 @@ export default function AppLayout({ children }) {
         )}
       </Header>
       <Content style={{ padding: '2rem' }}>{children}</Content>
-      <Footer style={{ textAlign: 'center' }}>Wishlist ©2025</Footer>
+      <Footer style={{ textAlign: 'center' }}>Wishlist ©{date.current}</Footer>
     </Layout>
   );
 }

@@ -14,7 +14,7 @@ export default function CreateWishlistPage() {
       await api.post('/api/wishlists/', formData);
       Notification.info('Вишлист создан!');
       navigate('/wishlists');
-    } catch (error) {
+    } catch {
       Notification.error('Ошибка при создании вишлиста');
     } finally {
       setIsFormLoading(false);

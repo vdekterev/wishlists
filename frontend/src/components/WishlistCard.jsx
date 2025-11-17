@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Modal, QRCode, Typography } from 'antd';
+import { Avatar, Button, Card, Modal, QRCode } from 'antd';
 import {
   DeleteOutlined,
   ExclamationCircleOutlined,
@@ -9,16 +9,12 @@ import api from '../api/axios.js';
 import { useNavigate } from 'react-router-dom';
 import Notification from './ui/Notification.jsx';
 /**
- * @param {Object} root0
- * @param {WishlistEntity} root0.wishlist
- * @param {Function} root0.onClick
+ * @param {object} wishlist
  */
-export default function WishlistCard({ wishlist, onClick }) {
+export default function WishlistCard({ wishlist }) {
   const { id, name, isPublic, user, items } = wishlist;
   const navigate = useNavigate();
   const [modal, contextHolder] = Modal.useModal();
-
-  const link = `http://localhost:5173/wishlists/${id}`;
 
   const openRemoveModal = () => {
     modal.confirm({
@@ -36,11 +32,12 @@ export default function WishlistCard({ wishlist, onClick }) {
       navigate(0);
     } catch {
       Notification.error('Ошибка при удалении вишлиста');
-    } finally {
     }
   };
 
   const showQR = () => {
+    const link = `${window.location.href}/${id}`;
+
     modal.info({
       content: (
         <div
@@ -72,6 +69,8 @@ export default function WishlistCard({ wishlist, onClick }) {
     });
   };
 
+  const openWishlistPage = () => navigate(`/wishlists/${wishlist.id}`);
+
   const actions = [
     <DeleteOutlined key="delete" onClick={openRemoveModal} />,
     <ShareAltOutlined key="share" onClick={showQR} />,
@@ -79,16 +78,8 @@ export default function WishlistCard({ wishlist, onClick }) {
 
   return (
     <>
-      <Card style={{ minWidth: 300 }} actions={actions} onClick={onClick}>
-        <Card.Meta
-          avatar={
-            <Avatar
-              src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${Math.random()}`}
-            />
-          }
-          title={name}
-          description={<p>This is the description</p>}
-        />
+      <Card style={{ minWidth: 300 }} actions={actions} onClick={openWishlistPage}>
+        <Card.Meta title={name} description={<p>This is the description</p>} />
       </Card>
       {contextHolder}
     </>

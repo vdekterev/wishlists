@@ -9,22 +9,19 @@ export default function AllWishlistPage() {
   const [wishlists, setWishlists] = useState([]);
   const navigate = useNavigate();
 
-  const fetchWishlists = async () => {
-    try {
-      const res = await api.get('api/wishlists');
-      setWishlists(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
+    const fetchWishlists = async () => {
+      try {
+        const res = await api.get('api/wishlists');
+        setWishlists(res.data);
+      } catch {
+        Notification.error('Ошибка при получении вишлистов');
+      }
+    };
     void fetchWishlists();
   }, []);
 
-  const onCreate = () => {
-    navigate('/wishlists/create');
-  };
+  const onCreate = () => navigate('/wishlists/create');
 
   return (
     <div
